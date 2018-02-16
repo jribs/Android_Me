@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--have tried both class:= and android:name:=-->
+<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+    class="com.example.android.android_me.ui.MasterListFragment"
+    android:id="@+id/fragment_masterlist"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    />
+
+
