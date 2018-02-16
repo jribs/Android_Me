@@ -19,6 +19,7 @@ package com.example.android.android_me.ui
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import com.example.android.android_me.R
+import com.example.android.android_me.data.AndroidImageAssets
 
 // This activity will display a custom Android image composed of three body parts: head, body, and legs
 class AndroidMeActivity : AppCompatActivity() {
@@ -26,9 +27,42 @@ class AndroidMeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_android_me)
+        if(savedInstanceState==null) {
+            createBodyPartFragments()
+        }
+    }
 
+//2nd layer
+    private fun createBodyPartFragments() {
+        generateHeadFragment()
+        generateBodyFragment()
+        generateLegFragment()
+    }
+
+
+//3rd layer
+    private fun generateHeadFragment() {
+        val headFragment = BodyPartFragment()
+        headFragment.mListOfDrawableResources = AndroidImageAssets.getHeads().toIntArray()
         supportFragmentManager.beginTransaction()
-                .add(R.id.head_container, BodyPartFragment())
+                .add(R.id.head_container, headFragment)
                 .commit()
     }
+
+    private fun generateBodyFragment(){
+        val bodyFragment = BodyPartFragment()
+        bodyFragment.mListOfDrawableResources = AndroidImageAssets.getBodies().toIntArray()
+        supportFragmentManager.beginTransaction()
+                .add(R.id.body_container, bodyFragment)
+                .commit()
+    }
+
+    private fun generateLegFragment(){
+        val legFragment = BodyPartFragment()
+        legFragment.mListOfDrawableResources = AndroidImageAssets.getLegs().toIntArray()
+        supportFragmentManager.beginTransaction()
+                .add(R.id.leg_container, legFragment)
+                .commit()
+    }
+
 }
