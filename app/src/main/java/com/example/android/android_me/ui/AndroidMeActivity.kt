@@ -44,6 +44,8 @@ class AndroidMeActivity : AppCompatActivity() {
     private fun generateHeadFragment() {
         val headFragment = BodyPartFragment()
         headFragment.mListOfDrawableResources = AndroidImageAssets.getHeads().toIntArray()
+        val b = intent.hasExtra(getString(R.string.args_legs))
+        headFragment.mListIndex = intent.getIntExtra(getString(R.string.args_head),0)
         supportFragmentManager.beginTransaction()
                 .add(R.id.head_container, headFragment)
                 .commit()
@@ -52,6 +54,7 @@ class AndroidMeActivity : AppCompatActivity() {
     private fun generateBodyFragment(){
         val bodyFragment = BodyPartFragment()
         bodyFragment.mListOfDrawableResources = AndroidImageAssets.getBodies().toIntArray()
+        bodyFragment.mListIndex = intent.getIntExtra(getString(R.string.args_body),0)
         supportFragmentManager.beginTransaction()
                 .add(R.id.body_container, bodyFragment)
                 .commit()
@@ -60,6 +63,7 @@ class AndroidMeActivity : AppCompatActivity() {
     private fun generateLegFragment(){
         val legFragment = BodyPartFragment()
         legFragment.mListOfDrawableResources = AndroidImageAssets.getLegs().toIntArray()
+        legFragment.mListIndex = intent.getIntExtra(getString(R.string.args_legs),0)
         supportFragmentManager.beginTransaction()
                 .add(R.id.leg_container, legFragment)
                 .commit()

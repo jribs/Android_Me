@@ -31,12 +31,14 @@ class MasterListFragment: Fragment() {
             layoutView.gridview_all_parts.setOnItemClickListener { adapterView, view, position, id ->
                     imageClickListener.onImageClicked(position=position)
             }
+            layoutView.button_next.setOnClickListener { imageClickListener.onNextClicked() }
         }
         return layoutView
     }
 
     interface OnImageClickListener {
         fun onImageClicked(position: Int)
+        fun onNextClicked()
     }
 
 }

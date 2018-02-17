@@ -12,9 +12,6 @@ class BodyPartFragment: android.support.v4.app.Fragment(){
     var mListOfDrawableResources: IntArray? = null
     var mListIndex: Int = 0
 
-
-
-
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val primaryView: View = inflater.inflate(R.layout.fragment_body_part, container, false)
 
